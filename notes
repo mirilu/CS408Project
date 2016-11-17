@@ -1,0 +1,45 @@
+notes for project
+
+webpage thing: miriam
+required functionality: nick
+serialization: gabriel
+
+Required functionality (the non-automatic things can be done through text commands):
+	[timestamp] (source) <sender> message
+
+	automatic:
+		- fetching logs from channels
+		- receiving private messages
+
+	manual:
+		- login
+		- logout
+		- join channel
+		- leave channel
+		- send message
+			- either to channel or other user
+		- get channel user list
+
+suggested stuff for page:
+	- ability to filter based on type of message
+
+States of the channels, logs, and what can be stored in the file system:
+	- channels:
+		- channel name (pk)
+		- user list
+		- message list
+
+	- users:
+		- name (pk)
+		- channel list
+		- time of previous refresh
+		- private message list
+
+	- message:
+		- destination (pk)
+		- text
+		- sender (pk)
+		- time (pk)
+
+	- private messages:
+		- essentially messages except reached from a user's private message list instead of a channel's message list
