@@ -1,151 +1,110 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
+<?php
+function getChatlog(){
+    if (file_exists("chatlog.html") && filesize("chatlog.html") > 0) {
+                    $handle = fopen("chatlog.html", "r");
+                    $contents = fread($handle, filesize("chatlog.html"));
+                    fclose($handle);
+                    echo $contents;
+                }
+}
+
+if (isset($_GET['logout'])) {
+    $doc = new DOMDocument();
+    $doc->loadHTML('user.html');
+    $element = $doc->getElementById('userlist');
+    $element->parentNode->removeChild($element);
+    echo $doc->saveHTML();
+
+    $fp = fopen("chatlog.html", 'a');
+    fwrite($fp, "<div class='logout'><i>User " . $_SESSION ['username'] . " has left the chat session.</i><br></div>");
+    fclose($fp);
+    session_destroy();
+}
+
+ if(isset($_POST['Enter'])){
+        if("" == trim($_POST['username'])){
+            $_SESSION['username'] = "guest". rand(1,10000);  
+         }
+        else{
+            $_SESSION['username'] = stripslashes(htmlspecialchars($_POST['username']));
+        }
+        $fp = fopen("user.html", 'a');
+        fwrite($fp, "<div id='userlist'> ". $_SESSION["username"] . "<br> </div>");
+        fclose($fp);
+            
+        $fl = fopen("chatlog.html", 'a');
+        fwrite($fl, "<div id = 'chatlog'>[". date("m/d/Y h:i:sa"). "] <i> " . $_SESSION["username"]
+                . "</i> has joined in<br></div>" );
+        fclose($fl);
+        echo '<script>javascript: login("hide") ;</script>';   
+        }
+    
+?>
+
 
 <html>
     <head>
-        <script type ="text/javascript" lang="Javascript">
-
-            function changetoPop() {
-                document.getElementById('overlay').style.display = 'block';
-                document.getElementById('mainpage').setAttribute('class', 'is-blurred')
-                login('show');
-
-            }
-
-            function showInput() {
-                if(document.getElementById("user_input").value == ""){
-                    document.getElementById('display').innerHTML =
-                        "guest" + Math.floor((Math.random() * 10000) + 1);
-                }
-                else{   
-                document.getElementById('display').innerHTML =
-                        document.getElementById("user_input").value;
-            }
-                login('hide');
-
-            }
-
-            function giveUsername() {
-                document.getElementById('display').innerHTML =
-                        "guest" + Math.floor((Math.random() * 10000) + 1);
-                login('hide');
-            }
-
-            function login(showhide) {
-                if (showhide === "show") {
-                    document.getElementById('popup').style.visibility = "visible";
-                } else if (showhide === "hide") {
-                    document.getElementById('overlay').style.display = 'none';
-                    document.getElementById('mainpage').setAttribute('class', 'null')
-                    document.getElementById('popup').style.visibility = "hidden";
-
-                }
-            }
-
-        </script>
-        <meta charset="UTF-8">
         <title>ChatRoom</title>
-        <style type="text/css">
-            #popup{
-                margin: 100; 
-                margin-left: 35%; 
-                margin-right: 40%;
-                margin-top: 70px; 
-                padding-top: 20px; 
-                width: 30%; 
-                height: 180px; 
-                position: fixed; 
-                background: #F8F8FF; 
-                border: solid #000000 1px; 
-                z-index: 9; 
-                font-family: Helvetica; 
-                visibility: hidden; 
-            }
-            #mainpage{
-                width: 95%;
-                height: 80vh;
-                border: solid 17px beige;
-                padding: 15px;
-                overflow: auto;
-                position: relative;
-                font-family: Tahoma;
-           
-            }
-            
-            #chatbox{
-                width: 94%;
-                height: 75vh;  
-                border: solid 1px black; 
-            }
-            
-           
-            .is-blurred {
-                position: absolute;
-                -webkit-filter: blur(6px);
-                -moz-filter: blur(6px);
-                -ms-filter: blur(6px);
-                -o-filter: blur(6px);
-                filter: blur(6px);
-
-            }
-            
-            
-            #overlay    {
-                position: fixed;
-                display: none;
-                left: 0px;
-                top: 0px;
-                right: 0px;
-                bottom: 0px;
-                background: rgba(255,255,255,.8);
-                z-index: 999;
-            }
-
-        </style>
-
+        <meta charset="UTF-8">
+        <script src="jsScripts.js"></script>
+        <link type="text/css" rel="stylesheet" href="style.css" />
     </head>
 
     <body>
+
+        <!-- This is the pop up that happens when User has not given a username -->
         <div id ='overlay'>
 
 
             <div id = "popup">      
-                <form action = "javascript:;" method = "post" name="login">
+                <form method = "post" name="login">
                     <br><center> Must have a username: </center> 
                     <br> <center>Enter a username or leave blank and click "Enter"</center></br>
-                    <center><input type="text" id = "user_input" size="40" /> <br></center>
-                    <center><input type="submit" value="Enter" name="Enter" onclick = "showInput();"/> </center>
+                    <center><input type="text" id = "user_input" name="username" size="40" /> <br></center>
+                    <center><input type="submit" value="Enter" name="Enter"/> </center>
                 </form>
             </div> 
         </div>
+
         <h1><center> Welcome to the Chat Room </center></h1>
+        <p class="logout">
+            <a id="exit" href="#">Logout</a>
+        </p>
 
         <div id ="mainpage">
-            <div id ="chatbox">
-                    <span id ="display" style = " bottom:0;"></span>
-                </div>
-            <form action = "javascript:; " method="post"> 
-                
+            <form name = 'postForm' action = "postForm.php" method="post" id = 'form' onsubmit="validateMsg();"> 
                 <br>
-                <input type="text" name="typechat" placeholder = "Type here" size="100"
-                       style = "position: relative;"/>
-                
-                <input type="submit" value="Submit" style = "float: bottom;" onclick ="changetoPop();"/>
-                
-                
-                <br>
-                <?php
-                
-                
-                ?>
-
+                <input type="text" id = 'textchat' name="textchat" placeholder = "Type here" style ="width: 75vw;"/>
+                <input type="submit" value="Submit" id ='submit' name="submit" />
             </form>
 
+            <div id ="chatbox">
+                <?php
+                    getChatlog();
+                ?>
+            </div>
+            
+            <div id ='channellist'> 
+                <center>Users</center> <br>
+                <?php
+                if (file_exists("user.html") && filesize("user.html") > 0) {
+                    $handle = fopen("user.html", "r");
+                    $contents = fread($handle, filesize("user.html"));
+                    fclose($handle);
+                    echo $contents;
+                }
+                ?>
+            </div>
+            
+            <form action = "postForm.php" method="post" id = 'form' name = 'postForm' onsubmit="validateMsg();"> 
+                <br>
+                <input type="text" id = 'textchat' name="textchat" placeholder = "Type here" style ="width: 75vw;"/>
+                <input type="submit" value="Submit" id ='submit' name="submit" />
+            </form>
         </div>
-
     </body>
 </html>
+
+
