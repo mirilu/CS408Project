@@ -1,5 +1,5 @@
 #popup{
-    margin: 100; 
+    margin: 100px; 
     margin-left: 35%; 
     margin-right: 40%;
     margin-top: 70px; 
@@ -13,23 +13,36 @@
     font-family: Helvetica; 
     visibility: hidden; 
 }
+
 #mainpage{
-    width: 95%;
-    height: 80vh;
+    width: 90vw;
+    height: 75vh;
     border: solid 17px beige;
-    padding: 15px;
-    overflow: auto;
+    padding: 30px;
+    padding-top: 20px;
+    padding-right: 10px; 
     position: relative;
-    font-family: Tahoma;
+    
+    font-family: Georgia;
 
 }
 
 #chatbox{
-    width: 94%;
-    height: 75vh;  
+    width: 71vw;
+    height: 73vh; 
+    overflow: auto;
     border: solid 1px black; 
+    text-align: left;
+    float:left;
 }
-
+#channellist{
+    width:15vw;
+    height:73vh;
+    overflow:auto;
+    border:solid 1px black;
+    float:left;
+      
+}
 
 .is-blurred {
     position: absolute;
@@ -41,7 +54,6 @@
 
 }
 
-
 #overlay    {
     position: fixed;
     display: none;
@@ -52,3 +64,31 @@
     background: rgba(255,255,255,.8);
     z-index: 999;
 }
+#form{
+    position: absolute; 
+    width: 85vw; 
+    bottom: 0;
+    float: left;
+    margin-bottom: 10px;
+    vertical-align: bottom;
+}
+/*
+#typechat{
+    position: absolute; 
+    width: 85vw; 
+    bottom: 0;
+    float: left;
+    margin-bottom: 10px;
+    vertical-align: bottom;
+}
+
+#submitbutton{
+    position:absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 10px;
+    float:right;
+    vertical-align:bottom;
+}
+
+*/
