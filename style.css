@@ -1,0 +1,54 @@
+#popup{
+    margin: 100; 
+    margin-left: 35%; 
+    margin-right: 40%;
+    margin-top: 70px; 
+    padding-top: 20px; 
+    width: 30%; 
+    height: 180px; 
+    position: fixed; 
+    background: #F8F8FF; 
+    border: solid #000000 1px; 
+    z-index: 9; 
+    font-family: Helvetica; 
+    visibility: hidden; 
+}
+#mainpage{
+    width: 95%;
+    height: 80vh;
+    border: solid 17px beige;
+    padding: 15px;
+    overflow: auto;
+    position: relative;
+    font-family: Tahoma;
+
+}
+
+#chatbox{
+    width: 94%;
+    height: 75vh;  
+    border: solid 1px black; 
+}
+
+
+.is-blurred {
+    position: absolute;
+    -webkit-filter: blur(6px);
+    -moz-filter: blur(6px);
+    -ms-filter: blur(6px);
+    -o-filter: blur(6px);
+    filter: blur(6px);
+
+}
+
+
+#overlay    {
+    position: fixed;
+    display: none;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: rgba(255,255,255,.8);
+    z-index: 999;
+}

@@ -5,7 +5,7 @@ required functionality: nick
 serialization: gabriel
 
 Required functionality (the non-automatic things can be done through text commands):
-	[timestamp] (source) <sender> message
+	[timestamp] (destination) <sender> message
 
 	automatic:
 		- fetching logs from channels

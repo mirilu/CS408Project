@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<html>
+    <head>
+        <script src="jsScripts.js"></script>
+        <meta charset="UTF-8">
+        <title>ChatRoom</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+        </style>
+
+    </head>
+
+    <body>
+        <div id ='overlay'>
+
+
+            <div id = "popup">      
+                <form action = "javascript:;" method = "post" name="login">
+                    <br><center> Must have a username: </center> 
+                    <br> <center>Enter a username or leave blank and click "Enter"</center></br>
+                    <center><input type="text" id = "user_input" size="40" /> <br></center>
+                    <center><input type="submit" value="Enter" name="Enter" onclick = "showInput();"/> </center>
+                </form>
+            </div> 
+        </div>
+        <h1><center> Welcome to the Chat Room </center></h1>
+
+        <div id ="mainpage">
+            <div id ="chatbox">
+                    <span id ="display" style = " bottom:0;"></span>
+                </div>
+            <form action = "javascript:; " method="post"> 
+                
+                <br>
+                <input type="text" name="typechat" placeholder = "Type here" size="100"
+                       style = "position: relative;"/>
+                
+                <input type="submit" value="Submit" style = "float: bottom;" onclick ="changetoPop();"/>
+                
+                <!--
+                <?php
+                include "index.php";
+                ?>
+                -->
+                
+                <br>
+            </form>
+
+        </div>
+
+    </body>
+</html>
