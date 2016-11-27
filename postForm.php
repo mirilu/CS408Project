@@ -1,12 +1,9 @@
 <?php
 
-session_start();
 require_once('index.php');
 
 // If there is no username, then popup div would be visible
-if (!isset($_SESSION['username'])) {
-    echo '<script>javascript: changetoPop();</script>';
-}
+
 
 // if the textchat is setup and it is not empty, then save the user input to 
 // an html called chatlog
