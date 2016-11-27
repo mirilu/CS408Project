@@ -28,8 +28,7 @@ function login(showhide) {
 }
 //SEND DATA TO LOGINFORM.PHP
 function submitUser(){
-     var username = document.getElementById("user_input").value;
-   
+     var username = document.getElementById("user_input").value; 
     //Submit thru AJAX
     $.ajax({
         type: "POST",
