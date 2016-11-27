@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 
 <?php
+include('classes.php');
 session_start();
+
+
+$user = new User();
+$_SESSION['userClass'] = $user;
 
 //This opens up the chatlog.html file and reads in all its contents
 //then displays it (echos)
@@ -54,9 +59,10 @@ if (isset($_GET['logout'])) {
 
     <body>
        
-
-        <!-- This is the pop up that happens when User has not given a username  -->
-        <div id ='overlay'>
+        <?php 
+            if (!isset($_SESSION['username'])) {
+               echo '<script>javascript: changetoPop();</script>';
+               echo '<div id ="overlay">
             <div id = "popup">      
                 <form method = "post" name="login" action ="loginForm.php" >
                     <br><center> Must have a username: </center> 
@@ -65,7 +71,11 @@ if (isset($_GET['logout'])) {
                     <center><input type="submit" value="Enter" name="Enter" onsubmit="submitUser()"/> </center>
                 </form>
             </div> 
-        </div>
+        </div>';
+            }
+        ?>
+        <!-- This is the pop up that happens when User has not given a username  -->
+        
          
         <h1><center> Welcome to the Chat Room </center></h1>
         <p class="logout">

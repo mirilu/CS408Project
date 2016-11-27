@@ -2,7 +2,7 @@
     margin: 100px; 
     margin-left: 35%; 
     margin-right: 40%;
-    margin-top: 70px; 
+    margin-top: 200px; 
     padding-top: 20px; 
     width: 30%; 
     height: 180px; 
@@ -11,9 +11,8 @@
     border: solid #000000 1px; 
     z-index: 9; 
     font-family: Helvetica; 
-    visibility: hidden; 
+    visibility: visible;
 }
-
 #mainpage{
     width: 90vw;
     height: 75vh;
@@ -46,22 +45,22 @@
 
 .is-blurred {
     position: absolute;
-    -webkit-filter: blur(6px);
-    -moz-filter: blur(6px);
-    -ms-filter: blur(6px);
-    -o-filter: blur(6px);
-    filter: blur(6px);
+    -webkit-filter: blur(100px);
+    -moz-filter: blur(100px);
+    -ms-filter: blur(100px);
+    -o-filter: blur(100px);
+    filter: blur(100px);
 
 }
 
 #overlay    {
     position: fixed;
-    display: none;
+    display: block;
     left: 0px;
     top: 0px;
     right: 0px;
     bottom: 0px;
-    background: rgba(255,255,255,.8);
+    background: rgba(255,255,255,.9);
     z-index: 999;
 }
 #form{
