@@ -8,6 +8,7 @@
 
 /* global empty */
 
+var username;
 //method changetoPop: will make the main page blurry and make the login
 // form pop up
 function changetoPop() {
@@ -28,7 +29,7 @@ function login(showhide) {
 }
 //SEND DATA TO LOGINFORM.PHP
 function submitUser(){
-     var username = document.getElementById("user_input").value; 
+    username = document.getElementById("user_input").value; 
     //Submit thru AJAX
     $.ajax({
         type: "POST",
@@ -36,24 +37,25 @@ function submitUser(){
         data: username,
         cache:false
     });
-    return false;
+    return true;
     
 }
 
 //SEND DATA TO POSTFORM.PHP
 function submitForm(){
     var msg= document.getElementById("textchat").value;
-    //var Enter = document.getElementById("enter").value;
+    var data1 = msg + username;
     //var data = msg + Enter;
     //Submit thru AJAX
     $.ajax({
         type: "POST",
         url:"postForm.php",
-        data: msg,
+        data: data1,
         cache:false
     });
     return false;
 }
+
 
 /**
 function open(evt, Channel) {

@@ -11,20 +11,18 @@ if ("" == trim($_POST['username'])) {
 }
 //$user->setName($_SESSION['username']);
 //This will make a html file where all usernames will be saved
-$fp = fopen("user.html", 'a');
-fwrite($fp, "<div id='userlist'> " . $_SESSION['username'] . "<br> </div>");
+$fp = fopen("user.txt", 'a');
+fwrite($fp, $_SESSION['username'] . " \r\n");
 fclose($fp);
 
 // This will make another html file for whats to show on the chatbox
-$fl = fopen("chatlog.html", 'a');
-fwrite($fl, "<div id = 'chatlog'>[" . date("m/d/Y h:i:sa") . "] <i><b> " . $_SESSION['username']
-        . "</b></i> has joined in<br></div>");
+$fl = fopen("chatlog.txt", 'a');
+fwrite($fl, '[' . date("m/d/Y h:i:sa") . '] <i>' . $_SESSION['username']
+        . '</i> has joined in' . "\r\n");
 fclose($fl);
-//this will then close the pop up
-echo '<script>javascript: login("hide") ;</script>';
 
 //redirect back to the index page
-header('Location: index.php');
+header('Location: startPage.php');
 exit();
 ?>
 
