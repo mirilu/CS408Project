@@ -17,14 +17,29 @@
 		<code>
 			<?php
 				include("functions.php");
-				echo nl2br(file_get_contents(getFileName($_GET["script"]),NULL,NULL,5));
+				$fileName = getFileName($_GET["script"]);
+				$contents = file_get_contents($fileName);
+
+				$contents = str_replace("<", "&#60;", $contents);
+				$contents = str_replace(">", "&#62;", $contents);
+
+				echo nl2br($contents);
 			?>
 		</code>
 	</div>
 
 	<div id="samples">
-		<a href="./index.php?script=1">sample 1</a><br>
-		<a href="./index.php?script=2">sample 2</a><br>
+		<?php
+		$files = scandir("samples/");
+
+		foreach ($files as $file) {
+			if ($file != "." && $file != "..") {
+				echo "<a href=\"./index.php?script="
+					.explode(".php",$file)[0]
+					."\">".explode(".php",$file)[0]."</a><br>";
+			}
+		}
+		?>
 		<!-- more samples can just be put here-->
 	</div>
 
