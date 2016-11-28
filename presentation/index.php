@@ -16,14 +16,15 @@
 	<div id="scriptcontents">
 		<code>
 			<?php
-				echo nl2br(file_get_contents("samples/".$_GET["script"],NULL,NULL,5));
+				include("functions.php");
+				echo nl2br(file_get_contents(getFileName($_GET["script"]),NULL,NULL,5));
 			?>
 		</code>
 	</div>
 
 	<div id="samples">
-		<a href="./index.php?script=sample1.php">sample 1</a><br>
-		<a href="./index.php?script=sample2.php">sample 2</a><br>
+		<a href="./index.php?script=1">sample 1</a><br>
+		<a href="./index.php?script=2">sample 2</a><br>
 		<!-- more samples can just be put here-->
 	</div>
 
@@ -32,7 +33,7 @@
 		<b>Results</b><br><br>
 		<code>
 			<?php
-				include("samples/".$_GET["script"]);
+				include(getFileName($_GET["script"]));
 			?>
 		</code>
 	</div>
