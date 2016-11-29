@@ -37,7 +37,8 @@ function submitUser(){
         data: username,
         cache:false
     });
-    return true;
+    loadUsers();
+    return false;
     
 }
 
@@ -89,21 +90,19 @@ function loadUsers(){
     $.ajax({
         url: "user.txt",
         cache: false,
-        success: function(data){       
-            if(data.text){
-						for (var i = 0; i < data.text.length; i++) {
-                            $('#channellist').append($("<p>"+ data.text[i] +"</p>"));
-                        }								  
-				   }
-           // $("#channellist").html(data);
+        success: function(data){  
+            var lines = data.split('\r\n'),
+           htmlLines = lines.join('<br>') + '<br>';
+              $('#channellist').html(htmlLines);
+              						  
             //Auto-scroll          
           document.getElementById('channellist').scrollTop = document.getElementById('channellist').scrollHeight;        
         }   
     });
 }
 
-setInterval(loadUsers, 1500);
-setInterval (loadLog, 1500);
+setInterval(loadUsers, 2500);
+setInterval (loadLog, 2500);
 
 
 
