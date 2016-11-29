@@ -34,16 +34,28 @@ function getUsersOnline() {
     }
 }
 
+function removeFromLine($fileName, $username) {
+    $str = "";
+
+    $file = file($fileName);
+
+    foreach ($file as $line) {
+        if (trim($line) != $username) {
+            $str = $str.$line;
+        }
+    }
+
+    $file = fopen($fileName, "w+");
+    fwrite($file, $str);
+
+    fclose($file);
+}
+
 /** Still working on this method to let user logout **/
 if (isset($_GET['exit'])) {
     $userName = $_SESSION["username"];
     if (file_exists("user.txt") && filesize("user.txt") > 0) {
-        
-        
-                $contents = file_get_contents("user.txt");
-                $contents = str_replace($userName, "", $contents);
-                file_put_contents("user.txt", $contents);
-                file_put_contents("user.txt", implode('', file('user.txt', FILE_SKIP_EMPTY_LINES )));
+        removeFromLine("user.txt",$userName);
                 
             
         
