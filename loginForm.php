@@ -17,8 +17,8 @@ fclose($fp);
 
 // This will make another html file for whats to show on the chatbox
 $fl = fopen("chatlog.txt", 'a');
-fwrite($fl, '[' . date("m/d/Y h:i:sa") . '] <i>' . $_SESSION['username']
-        . '</i> has joined in' . "\r\n");
+fwrite($fl, '[' . date("h:i:sa") . '] <i>' . $_SESSION['username']
+        . '</i> has joined in' . "<br>");
 fclose($fl);
 
 //redirect back to the index page

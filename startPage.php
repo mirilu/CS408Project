@@ -34,64 +34,52 @@ function getUsersOnline() {
     }
 }
 
-
- 
-
 /** Still working on this method to let user logout **/
 if (isset($_GET['exit'])) {
-    
+    $userName = $_SESSION["username"];
     if (file_exists("user.txt") && filesize("user.txt") > 0) {
-        $handle = fopen("user.txt", "r");
-        while(!feof($handle)){
-            if(fgets($handle) == ($_SESSION['username'] . "\n")){
-                $contents = str_replace(fgets($handle), '', $contents);
+        
+        
+                $contents = file_get_contents("user.txt");
+                $contents = str_replace($userName, "", $contents);
                 file_put_contents("user.txt", $contents);
-                break;
-            }
-        }
+                file_put_contents("user.txt", implode('', file('user.txt', FILE_SKIP_EMPTY_LINES )));
+                
+            
+        
     }
+    $fp = fopen("chatlog.txt", 'a');
+                fwrite($fp, "[" . date("m/d/Y h:i:sa") . "] <i>User <b>" .
+                        $_SESSION ['username'] . "</b> has left the chat session.</i> <br>");
+                fclose($fp);
+                session_destroy();
+                header("Location: index.php");
 }
         
-    /**
-    $doc = new DOMDocument();
-    $doc->loadHTML('user.html');
-    $element = $doc->getElementById('userlist');
-    $element->parentNode->removeChild($element);
-    echo $doc->saveHTML();
-
-    $fp = fopen("chatlog.html", 'a');
-    fwrite($fp, "<div class='logout'><i>User " .
-            $_SESSION ['username'] . " has left the chat session.</i><br></div>");
-    fclose($fp);
-    session_destroy();
-     * 
-     */
+    
 
 ?>
 
 <html>
     <head>
 
-        
         <title>ChatRoom</title>
         <meta charset="UTF-8">
         <script type ="text/javascript" src = "client.js"></script> 
         <link type="text/css" rel="stylesheet" href="style.css" />
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <meta http-equiv="refresh" content="10" > 
 
     </head>
-              
-    <body>
+
+    <body onpagehide="removeUser()">
        
         <!-- This is the pop up that happens when User has not given a username  -->
         
-        <a href="startPage.php"></a>
+         
         <h1><center> Welcome to the Chat Room </center></h1>
         <p class="menu">
-            <a name="exit" href="./index.php?exit=true" >logout</a>
+            <a class="exit" href='startPage.php?exit=true' >logout</a>
         
-        <a id="msg" href="#">Send Private Msg</a>
         </p>
         <!-- This is the main div in the index.php page -->   
         <div id ="mainpage" >
@@ -101,14 +89,10 @@ if (isset($_GET['exit'])) {
                 <input type="submit" value="Submit" id ='submit' name='submit' onclick="submitForm();"/>
             </form>
             <!-- Where the log will be displayed -->
-           
-
-            <div id ="chatbox">  
+            <div id ="chatbox">
                 <?php
-                   getChatlog();//Method to get the html file
+                   getChatlog();  //Method to get the html file
                                     // where the logs are stored
- 
-
                 ?>
             </div>
             
@@ -117,16 +101,14 @@ if (isset($_GET['exit'])) {
                 <center>Users Online</center> <br>
                 <?php
                     getUsersOnline(); // To get the html file where
-                                         // users are stored
-                 
+                                            // users are stored
                 ?>
             </div>
 
 
         </div>
-       
+        
     </body>
-    </script>
 </html>
 
 

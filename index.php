@@ -17,7 +17,7 @@
                 <form method = "post" name="login" action ="loginForm.php" >
                     <br><center> Must have a username: </center> 
                     <br> <center>Enter a username or leave blank and click "Enter"</center></br>
-                    <center><input type="text" id = "user_input" name="username" size="40" /> <br></center>
+                    <center><input type="text" id = "user_input" name="username" style="width: 23vw" /> <br></center>
                     <center><input type="submit" value="Enter" name="Enter" onsubmit="submitUser()"/> </center>
                 </form>
                 

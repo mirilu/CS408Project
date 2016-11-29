@@ -53,30 +53,58 @@ function submitForm(){
         data: data1,
         cache:false
     });
+    loadlog()
     return false;
 }
 
-
-/**
-function open(evt, Channel) {
-    var i, tabcontent, tablinks;
-
-    // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    // Show the current tab, and add an "active" class to the link that opened the tab
-    document.getElementById(Channel).style.display = "block";
-    evt.currentTarget.className += " active";
+function removeUser(){
+    var remove = document.getElementById("exit");
+    $.ajax({
+        type: "GET",
+        url: 'startPage.php',
+        data: remove,
+        cache: false 
+    });
+    loadUsers()
+    return false
 }
-**/
+
+function loadLog(){    
+    
+    $.ajax({
+        url: "chatlog.txt",
+        cache: false,
+        success: function(data){       
+            
+            $("#chatbox").html(data);
+            //Auto-scroll          
+            document.getElementById('chatbox').scrollTop = document.getElementById('chatbox').scrollHeight;        
+        }   
+    });
+}
+
+
+function loadUsers(){
+    
+    $.ajax({
+        url: "user.txt",
+        cache: false,
+        success: function(data){       
+            if(data.text){
+						for (var i = 0; i < data.text.length; i++) {
+                            $('#channellist').append($("<p>"+ data.text[i] +"</p>"));
+                        }								  
+				   }
+           // $("#channellist").html(data);
+            //Auto-scroll          
+          document.getElementById('channellist').scrollTop = document.getElementById('channellist').scrollHeight;        
+        }   
+    });
+}
+
+setInterval(loadUsers, 1500);
+setInterval (loadLog, 1500);
+
+
 
 
