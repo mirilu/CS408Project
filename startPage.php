@@ -34,6 +34,9 @@ function getUsersOnline() {
     }
 }
 
+
+ 
+
 /** Still working on this method to let user logout **/
 if (isset($_GET['exit'])) {
     
@@ -69,19 +72,21 @@ if (isset($_GET['exit'])) {
 <html>
     <head>
 
+        
         <title>ChatRoom</title>
         <meta charset="UTF-8">
         <script type ="text/javascript" src = "client.js"></script> 
         <link type="text/css" rel="stylesheet" href="style.css" />
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <meta http-equiv="refresh" content="10" > 
 
     </head>
-
+              
     <body>
        
         <!-- This is the pop up that happens when User has not given a username  -->
         
-         
+        <a href="startPage.php"></a>
         <h1><center> Welcome to the Chat Room </center></h1>
         <p class="menu">
             <a name="exit" href="./index.php?exit=true" >logout</a>
@@ -96,10 +101,14 @@ if (isset($_GET['exit'])) {
                 <input type="submit" value="Submit" id ='submit' name='submit' onclick="submitForm();"/>
             </form>
             <!-- Where the log will be displayed -->
-            <div id ="chatbox">
+           
+
+            <div id ="chatbox">  
                 <?php
-                   getChatlog();  //Method to get the html file
+                   getChatlog();//Method to get the html file
                                     // where the logs are stored
+ 
+
                 ?>
             </div>
             
@@ -108,14 +117,16 @@ if (isset($_GET['exit'])) {
                 <center>Users Online</center> <br>
                 <?php
                     getUsersOnline(); // To get the html file where
-                                            // users are stored
+                                         // users are stored
+                 
                 ?>
             </div>
 
 
         </div>
-        
+       
     </body>
+    </script>
 </html>
 
 
