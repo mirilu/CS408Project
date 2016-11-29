@@ -34,31 +34,28 @@ function getUsersOnline() {
     }
 }
 
+
+
+
 function removeFromLine($fileName, $username) {
     $str = "";
-
     $file = file($fileName);
-
     foreach ($file as $line) {
         if (trim($line) != $username) {
             $str = $str.$line;
         }
     }
-
     $file = fopen($fileName, "w+");
     fwrite($file, $str);
-
     fclose($file);
 }
 
-/** Still working on this method to let user logout **/
 if (isset($_GET['exit'])) {
     $userName = $_SESSION["username"];
     if (file_exists("user.txt") && filesize("user.txt") > 0) {
         removeFromLine("user.txt",$userName);
-                
-            
-        
+         echo '<script> loadUsers();</script>';
+             
     }
     $fp = fopen("chatlog.txt", 'a');
                 fwrite($fp, "[" . date("m/d/Y h:i:sa") . "] <i>User <b>" .
@@ -67,6 +64,7 @@ if (isset($_GET['exit'])) {
                 session_destroy();
                 header("Location: index.php");
 }
+   
         
     
 
