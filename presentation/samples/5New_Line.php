@@ -26,7 +26,7 @@ echo $number;
 
 <?php
 //alternatively, you can just use "\n" and use the built in nl2br function
-$hello_world = nl2br("Hello world\n");
+$hello_world = nl2br("\n\nHello world\n");
 $number = 5;
 
 echo $hello_world;
