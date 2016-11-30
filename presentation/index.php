@@ -22,7 +22,7 @@
 
 				$contents = str_replace("<", "&#60;", $contents);
 				$contents = str_replace(">", "&#62;", $contents);
-				$contents = str_replace("\t", "&#09;", $contents);
+				$contents = str_replace("  ", "&#09;", $contents);
 
 				echo nl2br($contents);
 			?>
