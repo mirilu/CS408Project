@@ -22,7 +22,6 @@
 
 				$contents = str_replace("<", "&#60;", $contents);
 				$contents = str_replace(">", "&#62;", $contents);
-				$contents = str_replace("  ", "&#09;", $contents);
 
 				echo nl2br($contents);
 			?>
@@ -44,9 +43,11 @@
 		<!-- more samples can just be put here-->
 	</div>
 
+	<div id="results_header">
+		<b>Results:</b>
+	</div>
+
 	<div id="results">
-		
-		<b>Results</b><br><br>
 		<code>
 			<?php
 				include(getFileName($_GET["script"]));
