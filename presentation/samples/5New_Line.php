@@ -24,3 +24,12 @@ echo $number;
 
 ?>
 
+<?php
+//alternatively, you can just use "\n" and use the built in nl2br function
+$hello_world = "Hello world\n";
+$number = 5;
+
+echo $hello_world;
+echo $number;
+
+?>
