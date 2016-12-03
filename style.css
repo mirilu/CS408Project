@@ -5,7 +5,7 @@
     margin-top: 200px; 
     padding-top: 20px; 
     width: 30%; 
-    height: 180px; 
+    height: 250px; 
     position: fixed; 
     background: #F8F8FF; 
     border: solid #000000 1px; 
@@ -24,6 +24,17 @@
     
     font-family: Georgia;
 
+}
+
+#RoomList{
+     width: 90vw;
+    height: 90vh; 
+    overflow: auto;
+    border: solid 1px black; 
+    text-align: left;
+    float:left;
+     font-family: Georgia;
+    
 }
 
 #chatbox{

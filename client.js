@@ -37,10 +37,28 @@ function submitUser(){
         data: username,
         cache:false
     });
+    submitChatRoom();
     loadUsers();
     return false;
     
 }
+
+function submitChatRoom(){
+    roomname = document.getElementById("create_chatroom").value; 
+    //Submit thru AJAX
+    $.ajax({
+        type: "POST",
+        url:"loginForm.php",
+        data: roomname,
+        cache:false
+    });
+   
+    return false;
+    
+}
+
+
+
 
 //SEND DATA TO POSTFORM.PHP
 function submitForm(){
@@ -72,8 +90,9 @@ function removeUser(){
 
 function loadLog(){    
     
+    var v = document.getElementById("create_chatroom").value; 
     $.ajax({
-        url: "chatlog.txt",
+        url: v.concat("chatlog.txt"),
         cache: false,
         success: function(data){       
             
@@ -87,8 +106,9 @@ function loadLog(){
 
 function loadUsers(){
     
+    var vv = document.getElementById("create_chatroom").value; 
     $.ajax({
-        url: "user.txt",
+        url: vv.concat("user.txt"),
         cache: false,
         success: function(data){  
             var lines = data.split('\r\n'),

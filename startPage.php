@@ -7,11 +7,13 @@ session_start();
 $user = new User();
 $_SESSION['userClass'] = $user;
 
+ 
+
 //This opens up the chatlog.html file and reads in all its contents
 //then displays it (echos)
 function getChatlog() {
-     if (file_exists("chatlog.txt") && filesize("chatlog.txt") > 0) {
-        $handle = fopen("chatlog.txt", "r");
+     if (file_exists($_SESSION['rLog']) && filesize($_SESSION['rLog']) > 0) {
+        $handle = fopen($_SESSION['rLog'], "r");
         
             while(!feof($handle)){
                 $contents = fgets($handle);
@@ -21,11 +23,12 @@ function getChatlog() {
     }
 }
 
+
 //Similar to the getChatLog method, but used to read and display
 // the users online
 function getUsersOnline() {
-    if (file_exists("user.txt") && filesize("user.txt") > 0) {
-        $handle = fopen("user.txt", "r");
+    if (file_exists($_SESSION['rUSer']) && filesize($_SESSION['rUSer']) > 0) {
+        $handle = fopen($_SESSION['rUSer'], "r");
         while(!feof($handle)){
                 $contents = fgets($handle);
                  echo $contents . '<br>';
@@ -52,17 +55,17 @@ function removeFromLine($fileName, $username) {
 
 if (isset($_GET['exit'])) {
     $userName = $_SESSION["username"];
-    if (file_exists("user.txt") && filesize("user.txt") > 0) {
-        removeFromLine("user.txt",$userName);
+    if (file_exists($_SESSION['rUSer']) && filesize($_SESSION['rUSer']) > 0) {
+        removeFromLine($_SESSION['rUSer'],$userName);
          echo '<script> loadUsers();</script>';
              
     }
-    $fp = fopen("chatlog.txt", 'a');
+    $fp = fopen($_SESSION['rLog'], 'a');
                 fwrite($fp, "[" . date("m/d/Y h:i:sa") . "] <i>User <b>" .
                         $_SESSION ['username'] . "</b> has left the chat session.</i> <br>");
                 fclose($fp);
                 session_destroy();
-                header("Location: index.php");
+                header("Location: RoomList.php");
 }
    
         
@@ -86,7 +89,8 @@ if (isset($_GET['exit'])) {
         <!-- This is the pop up that happens when User has not given a username  -->
         
          
-        <h1><center> Welcome to the Chat Room </center></h1>
+        <h1><center> Welcome to the Chat Room: <?php echo $_SESSION['rN'];?></center></h1>
+        
         <p class="menu">
             <a class="exit" href='startPage.php?exit=true' >logout</a>
         
@@ -111,7 +115,7 @@ if (isset($_GET['exit'])) {
                 <center>Users Online</center> <br>
                 <?php
                     getUsersOnline(); // To get the html file where
-                                            // users are stored
+                                          // users are stored
                 ?>
             </div>
 

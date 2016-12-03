@@ -1,3 +1,14 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ * 
+ */
+
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,11 +24,12 @@
 
     <body>
        
-            <div id = "popup">      
+            <div id = "RoomList">      
                 <form method = "post" name="login" action ="loginForm.php" >
-                    <br><center> Must have a username: </center> 
+                    <br><center> Rooms </center> 
                     <br> <center>Enter a username or leave blank and click "Enter"</center></br>
                      <br> <center>Create a chatroom below</center></br>
+                     
                     <center><input type="text" id = "user_input" name="username" style="width: 23vw" /> <br></center>
                      <center><input type="text" id = "create_chatroom" name="roomname" style="width: 23vw" /> <br></center>
                     <center><input type="submit" value="Enter" name="Enter" onsubmit="submitUser()"/> </center>
