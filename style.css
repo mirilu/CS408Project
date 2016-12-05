@@ -10,7 +10,7 @@
     background: #F8F8FF; 
     border: solid #000000 1px; 
     z-index: 9; 
-    font-family: Helvetica; 
+     font-family: Helvetica; 
     visibility: visible;
 }
 #mainpage{
@@ -26,15 +26,16 @@
 
 }
 
+
+
 #RoomList{
-     width: 90vw;
-    height: 90vh; 
-    overflow: auto;
-    border: solid 1px black; 
-    text-align: left;
-    float:left;
-     font-family: Georgia;
-    
+     width: 100vw;
+    height: 90vw;
+    text-align: center;
+     background: #F8F8FF; 
+    position: relative;
+     font-family: Helvetica; 
+     
 }
 
 #chatbox{
@@ -81,6 +82,7 @@
     float: left;
     margin-bottom: 10px;
     vertical-align: bottom;
+   
 }
 
 #msg {

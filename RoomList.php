@@ -7,6 +7,16 @@
  * 
  */
 
+function showRooms()
+{
+    echo "Created Chatrooms:<br><br>";
+foreach (glob("*chatlog.txt*") as $filename) {
+  
+    echo str_replace("chatlog.txt", "", $filename)."<br>";
+    
+}
+
+}
 
 ?>
 <!DOCTYPE html>
@@ -24,18 +34,19 @@
 
     <body>
        
-            <div id = "RoomList">      
+        
+             <div id = "RoomList">      
                 <form method = "post" name="login" action ="loginForm.php" >
-                    <br><center> Rooms </center> 
-                    <br> <center>Enter a username or leave blank and click "Enter"</center></br>
-                     <br> <center>Create a chatroom below</center></br>
-                     
-                    <center><input type="text" id = "user_input" name="username" style="width: 23vw" /> <br></center>
-                     <center><input type="text" id = "create_chatroom" name="roomname" style="width: 23vw" /> <br></center>
+                    <h2><br><center> Rooms </center> 
+                    <br> <center>Enter a username or leave blank</center></br>
+                    <br> <center>Create or Join a chatroom below</center></br></h2>
+                    <h3><?php showRooms(); ?></h3>
+                   <center>Username:<input type="text" id = "user_input" name="username" style="width: 23vw" /> <br></center>
+                    <center>Chatroom:<input type="text" id = "create_chatroom" name="roomname" style="width: 23vw" /> <br></center> 
+                    
                     <center><input type="submit" value="Enter" name="Enter" onsubmit="submitUser()"/> </center>
                 </form>
                 
-            </div>
-        
+    </div>
     </body>
 </html>

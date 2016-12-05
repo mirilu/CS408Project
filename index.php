@@ -18,8 +18,8 @@
                     <br><center> Must have a username: </center> 
                     <br> <center>Enter a username or leave blank and click "Enter"</center></br>
                      <br> <center>Create a chatroom below</center></br>
-                    <center><input type="text" id = "user_input" name="username" style="width: 23vw" /> <br></center>
-                     <center><input type="text" id = "create_chatroom" name="roomname" style="width: 23vw" /> <br></center>
+                    <center>      Username:        <input type="text" id = "user_input" name="username" style="width: 23vw" /> <br></center>
+                     <center>     Chatroom:   <input type="text" id = "create_chatroom" name="roomname" style="width: 23vw" /> <br></center>
                     <center><input type="submit" value="Enter" name="Enter" onsubmit="submitUser()"/> </center>
                 </form>
                 

@@ -84,7 +84,7 @@ if (isset($_GET['exit'])) {
 
     </head>
 
-    <body onpagehide="removeUser()">
+    <body onpagehide="removeUser()">.
        
         <!-- This is the pop up that happens when User has not given a username  -->
         
