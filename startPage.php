@@ -23,6 +23,22 @@ function getChatlog() {
     }
 }
 
+//check for private messages
+function getPrivateMessages() {
+    $str = "";
+    $fileName = "PM_".$_SESSION['username'].".txt";
+
+    if (file_exists($fileName)) {
+        $file = fopen($fileName, "r");
+
+        while (!feof($file)) {
+            $str = fgets($file);
+            echo $str."<br>";
+        }
+
+        fclose($file);
+    }
+}
 
 //Similar to the getChatLog method, but used to read and display
 // the users online
@@ -31,7 +47,7 @@ function getUsersOnline() {
         $handle = fopen($_SESSION['rUSer'], "r");
         while(!feof($handle)){
                 $contents = fgets($handle);
-                 echo $contents . '<br>';
+                 echo $contents.'<br>';
             }
         fclose($handle);
     }
@@ -61,7 +77,7 @@ if (isset($_GET['exit'])) {
              
     }
     $fp = fopen($_SESSION['rLog'], 'a');
-                fwrite($fp, "[" . date("m/d/Y h:i:sa") . "] <i>User <b>" .
+                fwrite($fp, "[" . date("h:i:sa") . "] <i>User <b>" .
                         $_SESSION ['username'] . "</b> has left the chat session.</i> <br>");
                 fclose($fp);
                 session_destroy();
@@ -107,6 +123,10 @@ if (isset($_GET['exit'])) {
                 <?php
                    getChatlog();  //Method to get the html file
                                     // where the logs are stored
+
+                   if ($_SESSION["show_pms"]) {
+                        getPrivateMessages();
+                    }
                 ?>
             </div>
             

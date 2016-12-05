@@ -7,8 +7,6 @@ session_start();
 $rID = $_POST['roomname'];
 
 
-
-
 //If user did not input a username, we give them a guest one
 if ("" == trim($_POST['username'])) {
     $_SESSION['username'] = "guest" . rand(1, 10000);
@@ -23,7 +21,7 @@ fclose($fp);
 
 // This will make another html file for whats to show on the chatbox
 $fl = fopen($rID."chatlog.txt", 'a');
-fwrite($fl, '[' . date("h:i:sa") . '] <i>' . $_SESSION['username']
+fwrite($fl, "[" . date("h:i:sa") . "] <i>"  . $_SESSION['username']
         . '</i> has joined in' . "<br>");
 fclose($fl);
 
@@ -32,6 +30,7 @@ fclose($fl);
 $_SESSION['rN'] = $rID;
 $_SESSION['rLog'] = $rID."chatlog.txt";
 $_SESSION['rUSer'] = $rID."user.txt"; 
+$_SESSION['show_pms'] = false;
 
 
 
