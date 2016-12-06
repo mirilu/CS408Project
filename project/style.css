@@ -1,0 +1,104 @@
+#popup{
+    margin: 100px; 
+    margin-left: 35%; 
+    margin-right: 40%;
+    margin-top: 200px; 
+    padding-top: 20px; 
+    width: 30%; 
+    height: 250px; 
+    position: fixed; 
+    background: #F8F8FF; 
+    border: solid #000000 1px; 
+    z-index: 9; 
+     font-family: Helvetica; 
+    visibility: visible;
+}
+#mainpage{
+    width: 90vw;
+    height: 72vh;
+    border: solid 17px beige;
+    padding: 30px;
+    padding-top: 20px;
+    padding-right: 10px; 
+    position: relative;
+    
+    font-family: Georgia;
+
+}
+
+
+
+#RoomList{
+    margin: 80px; 
+    margin-left: 35%; 
+    margin-right: 40%;
+    margin-top: 100px; 
+    padding-top: 20px; 
+    padding-bottom: 20px;
+    width: 30%; 
+    position: fixed; 
+    background: #F8F8FF; 
+    border: solid #000000 1px; 
+    z-index: 3; 
+    font-family: Helvetica; 
+    visibility: visible;
+    overflow: auto;
+}
+
+#chatbox{
+    width: 71vw;
+    height: 70vh; 
+    overflow: auto;
+    border: solid 1px black; 
+    text-align: left;
+    float:left;
+}
+#channellist{
+    width:15vw;
+    height:70vh;
+    overflow:auto;
+    border:solid 1px black;
+    float:left;
+      
+}
+
+.is-blurred {
+    position: absolute;
+    -webkit-filter: blur(100px);
+    -moz-filter: blur(100px);
+    -ms-filter: blur(100px);
+    -o-filter: blur(100px);
+    filter: blur(100px);
+
+}
+
+#overlay    {
+    position: fixed;
+    display: block;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: rgba(255,255,255,.9);
+    z-index: 999;
+}
+#form{
+    position: absolute; 
+    width: 85vw; 
+    bottom: 0;
+    float: left;
+    margin-bottom: 10px;
+    vertical-align: bottom;
+   
+}
+
+#msg {
+    float:right;
+}
+
+h1{
+    font-family: Arial;
+    margin: 1px;
+}
+
+
