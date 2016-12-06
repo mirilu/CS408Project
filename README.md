@@ -11,9 +11,9 @@ $ cp project/* /var/www/html/project/
 
 Because some of the functions rely on file i/o, I had to user modify privileges and ownership in the directories to let it run, but I would assume this is more dependent on your machine
 
-$ sudo chown -R root:<wwwsomething> /var/www/html/project
+$ sudo chown -R root:[wwwsomething] /var/www/html/project
 $ sudo chmod 777 /var/www/html/project -R
 
 This is not the most secure way to do this, but it's not my personal computer and it worked for me
 
-Once it's all set up, you should be able to access it through a browser at <address>/project/
+Once it's all set up, you should be able to access it through a browser at [address]/project/
