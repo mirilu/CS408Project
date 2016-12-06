@@ -29,13 +29,20 @@
 
 
 #RoomList{
-     width: 100vw;
-    height: 90vw;
-    text-align: center;
-     background: #F8F8FF; 
-    position: relative;
-     font-family: Helvetica; 
-     
+    margin: 80px; 
+    margin-left: 35%; 
+    margin-right: 40%;
+    margin-top: 100px; 
+    padding-top: 20px; 
+    padding-bottom: 20px;
+    width: 30%; 
+    position: fixed; 
+    background: #F8F8FF; 
+    border: solid #000000 1px; 
+    z-index: 3; 
+    font-family: Helvetica; 
+    visibility: visible;
+    overflow: auto;
 }
 
 #chatbox{
