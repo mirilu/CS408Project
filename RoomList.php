@@ -9,7 +9,7 @@
 
 function showRooms()
 {
-    echo "Created Chatrooms:<br><br>";
+    echo "Created Chatrooms:<br>";
 foreach (glob("*chatlog.txt*") as $filename) {
   
     echo str_replace("chatlog.txt", "", $filename)."<br>";
@@ -37,10 +37,10 @@ foreach (glob("*chatlog.txt*") as $filename) {
         
              <div id = "RoomList">      
                 <form method = "post" name="login" action ="loginForm.php" >
-                    <h2><br><center> Rooms </center> 
-                    <br> <center>Enter a username or leave blank</center></br>
-                    <br> <center>Create or Join a chatroom below</center></br></h2>
-                    <h3><?php showRooms(); ?></h3>
+                    <b><center><font size="5"> Rooms </font></center></b>
+                    <center>Enter a username or leave blank</center>
+                    <center>Create or Join a chatroom below</center></h2>
+                <h3><center><?php showRooms(); ?></center></h3>
                    <center>Username:<input type="text" id = "user_input" name="username" style="width: 23vw" /> <br></center>
                     <center>Chatroom:<input type="text" id = "create_chatroom" name="roomname" style="width: 23vw" /> <br></center> 
                     
