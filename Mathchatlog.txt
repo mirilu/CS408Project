@@ -1,1 +1,0 @@
-[02:31:24am] <i>Bob</i> has joined in<br>[12/05/2016 02:31:27am] <i>User <b>Bob</b> has left the chat session.</i> <br>[02:31:39am] <i>Bob</i> has joined in<br>[12/05/2016 02:31:45am] <i>User <b>Bob</b> has left the chat session.</i> <br>
