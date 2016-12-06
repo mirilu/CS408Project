@@ -33,7 +33,7 @@ function getPrivateMessages() {
 
         while (!feof($file)) {
             $str = fgets($file);
-            echo $str."<br>";
+            echo $str ."<br>";
         }
 
         fclose($file);
@@ -47,7 +47,7 @@ function getUsersOnline() {
         $handle = fopen($_SESSION['rUSer'], "r");
         while(!feof($handle)){
                 $contents = fgets($handle);
-                 echo $contents.'<br>';
+                 echo $contents .'<br>';
             }
         fclose($handle);
     }
@@ -100,7 +100,7 @@ if (isset($_GET['exit'])) {
 
     </head>
 
-    <body onpagehide="removeUser()">.
+    <body onpagehide="removeUser()">
        
         <!-- This is the pop up that happens when User has not given a username  -->
         
